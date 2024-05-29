@@ -1,4 +1,6 @@
-# dsascanapi
+# TrendMicro DSA Scan API  
+
+Short description, will cleanup later
 
 Helper script to make single file scanning available through rest api.  
 Create directory "/opt/dsascanapi" and copy python file the directory.  
