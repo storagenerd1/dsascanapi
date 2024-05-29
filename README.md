@@ -2,7 +2,7 @@
 
 Short description, will cleanup later
 
-Helper script to make single file scanning available through rest api. 
+Helper script to make single file scanning available through rest api.  
 Can be started from commandline for testing.  
 /usr/bin/python3 dsascanapi.py  
 Or installed as service:  
