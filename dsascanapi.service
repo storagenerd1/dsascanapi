@@ -1,0 +1,14 @@
+[Unit]
+Description=TrendMicro DSA Api Server
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/opt/dsascanapi
+ExecStart=/usr/bin/python3 /opt/dsascanapi/dsascanapi.py
+Restart=always
+StandardOutput=file:/var/log//opt/dsascanapi//opt/dsascanapi.log
+StandardError=file:/var/log//opt/dsascanapi/error.log
+
+[Install]
+WanterBy=multi-user.target
