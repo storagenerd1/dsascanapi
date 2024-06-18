@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # Storagenerd v0.1 29-May-2024
+# Storagenerd v0.2 18-June-2024 - Added json response (thanks Chris)
 # Helper script to make single file scanning available through rest api.
 # Test with curl http://localhost:8081/api/v0.1/test or
 # curl -X POST -H "Content-Type: application/json" http://localhost:8081/api/v0.1/scan -d '{"file": "/home"}'
@@ -23,7 +24,7 @@ def runtest():
     file = '/home'
     cmd = "sudo /opt/ds_agent/dsa_scan --target %s --json" % file
     output = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE).stdout.decode('utf-8')
-    return output
+    return Response(output, mimetype='application/json')
 
 @app.route('/api/v0.1/scan', methods=['POST'])
 def runcmd():
@@ -31,7 +32,7 @@ def runcmd():
     print(file)
     cmd = "sudo /opt/ds_agent/dsa_scan --target %s --json" % file
     output = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE).stdout.decode('utf-8')
-    return output
+    return Response(output, mimetype='application/json')
 
 if __name__ == '__main__':
     app.run(host=host,port=port)
